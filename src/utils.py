@@ -78,5 +78,5 @@ def create_products_list(src_file):
             products_list.append(product_object)
     Category.product_count = len(products_list)
     print(f"Список продуктов: {products_list}")
-    print(f"Количество продуктов: {Category.product_count}")
+    print(f"Количество уникальных продуктов: {Category.product_count}")
     return products_list
