@@ -2,7 +2,7 @@ class Product:
     product_name: str
     product_description: str
     product_price: float
-    product_quantity: int
+    product_quantity: int  # количество в наличии
 
     def __init__(self, product_name, product_description, product_price, product_quantity):
         self.product_name = product_name

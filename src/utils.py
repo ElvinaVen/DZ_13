@@ -1,32 +1,104 @@
-import requests
-import urllib3
-from DZ_13_OOP1.src.Category_class import Category
+import json
+
+from DZ_13_OOP1.src import Category_class
 from DZ_13_OOP1.src.Product_class import Product
 
-urllib3.disable_warnings()
 
-
-def load_src_file(url):
+def load_src_file():
     """
-    Ф-ия загрузки списка из url
-    :param url: 'https://jsonkeeper.com/b/8NUV'
+    Ф-ия загрузки списка из json.
     :return: src_file - весь список товаров по категориям
     """
-    response = requests.get(url, verify=False)
-    src_file = response.json()
+    with open('file.json', 'r', encoding='utf-8') as file:
+        src_file = json.load(file)
     return src_file
 
 
-def create_category_object(src_file):
+def get_category_name(category_list):
+    """
+    получаем наименование категории
+    :return:category_name
+    """
+    category_name = category_list['name']
+    # print(category_name)
+    return category_name
+
+
+def get_category_description(category_list):
+    """
+    получаем описание категории
+    :return:category_description
+    """
+    category_description = category_list['description']
+    # print(category_description)
+    return category_description
+
+
+def get_category_products(category_list):
+    """
+    Получаем список товаров в категории
+    :return:category_products
+    """
+    category_products = category_list['products']
+    # print(category_products)
+    return category_products
+
+
+def get_product_name(products_list):
+    """
+    получаем наименование продукта для класса Products.
+    :param products_list:
+    :return:product_name
+    """
+    product_name = products_list['name']
+    # print(product_name)
+    return product_name
+
+
+def get_product_description(products_list):
+    """
+    получаем описание продукта.
+    :param products_list:
+    :return:products_description
+    """
+    products_description = products_list['description']
+    # print(products_description)
+    return products_description
+
+
+def get_products_price(products_list):
+    """
+    получаем цену продукта.
+    :param products_list:
+    :return:product_price
+    """
+    product_price = products_list['price']
+    # print(product_price)
+    return product_price
+
+
+def get_quantity(products_list):
+    """
+    получаем количество на складе.
+    :param products_list:
+    :return:product_quantity
+    """
+    product_quantity = products_list['quantity']
+    # print(product_quantity)
+    return product_quantity
+
+
+def create_category_object(category_list):
     """
     Создаем экземпляры класса Category
-    :param src_file
+    :param category_list
     :return: category_object
     """
-    category_name = src_file['name']
-    category_description = src_file['description']
-    category_products = src_file['products']
-    category_object = Category(category_name, category_description, category_products)
+    category_name = get_category_name(category_list)
+    category_description = get_category_description(category_list)
+    category_products = get_category_products(category_list)
+    category_object = Category_class.Category(category_name, category_description, category_products)
+    # print(category_object)
     return category_object
 
 
@@ -37,46 +109,40 @@ def create_product_object(products_list):
     :return: product_object
 
     """
-    product_name = products_list['name']
-    product_description = products_list['description']
-    product_price = products_list['price']
-    product_quantity = products_list['quantity']
+    product_name = get_product_name(products_list)
+    product_description = get_product_description(products_list)
+    product_price = get_products_price(products_list)
+    product_quantity = get_quantity(products_list)
     product_object = Product(product_name, product_description, product_price, product_quantity)
     return product_object
 
 
-def create_category_list(src_file):
+def create_cat_list(category_object, cat_list):
     """
-
-    :param src_file:
-    :return: category_list
+    Создаем список всех категорий
+    :param cat_list:
+    :param category_object:
+    :return: cat_list
     """
-    category_list = []
-
-    for i in range(len(src_file)):
-        category_object = create_category_object(src_file[i])
-        category_list.append(category_object)
-    Category.category_count = len(category_list)
-    print(f"Список категорий: {category_list}")
-    print(f"Количество категорий: {Category.category_count}")
-    return category_list
+    cat_list.append(category_object)
+    return cat_list
 
 
-def create_products_list(src_file):
-    """
-
-    :param src_file:
-    :return: products_list
-    """
-    products_list = []
-    count_product_object = 0
-
-    for i in range(len(src_file)):
-        for j in range(len(src_file[i]['products'])):
-            product_object = create_product_object(src_file[i]['products'][j])
-            count_product_object += 1
-            products_list.append(product_object)
-    Category.product_count = len(products_list)
-    print(f"Список продуктов: {products_list}")
-    print(f"Количество уникальных продуктов: {Category.product_count}")
-    return products_list
+# def create_products_list(src_file):
+#     """
+#
+#     :param src_file:
+#     :return: products_list
+#     """
+#     products_list = []
+#     count_product_object = 0
+#
+#     for i in range(len(src_file)):
+#         for j in range(len(src_file[i]['products'])):
+#             product_object = create_product_object(src_file[i]['products'][j])
+#             count_product_object += 1
+#             products_list.append(product_object)
+#     Category.product_count = len(products_list)
+#     print(f"Список продуктов: {products_list}")
+#     print(f"Количество уникальных продуктов: {Category.product_count}")
+#     return products_list
