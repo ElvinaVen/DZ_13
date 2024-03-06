@@ -11,8 +11,8 @@ for i in range(len(src_file)):
         product_object = create_product_object(products_list)
         print(product_object)
     cat_list = create_cat_list(category_object, cat_list)
-print(f"Список категорий: {cat_list}")
-print(f"Количество категорий: {Category.category_count}")
+# print(f"Список категорий: {cat_list}")
+# print(f"Количество категорий: {len(cat_list)}")
 
 # cat_list = create_category_list(category_object)
 # print(product_object)
