@@ -1,8 +1,5 @@
 import json
 
-from DZ_13_OOP1.src import Category_class
-from DZ_13_OOP1.src.Product_class import Product
-
 
 def load_src_file():
     """
@@ -14,34 +11,34 @@ def load_src_file():
     return src_file
 
 
-def get_category_name(category_list):
-    """
-    получаем наименование категории
-    :return:category_name
-    """
-    category_name = category_list['name']
-    # print(category_name)
-    return category_name
-
-
-def get_category_description(category_list):
-    """
-    получаем описание категории
-    :return:category_description
-    """
-    category_description = category_list['description']
-    # print(category_description)
-    return category_description
-
-
-def get_category_products(category_list):
-    """
-    Получаем список товаров в категории
-    :return:category_products
-    """
-    category_products = category_list['products']
-    # print(category_products)
-    return category_products
+# def get_category_name(category_list):
+#     """
+#     получаем наименование категории
+#     :return:category_name
+#     """
+#     category_name = category_list['name']
+#     # print(category_name)
+#     return category_name
+#
+#
+# def get_category_description(category_list):
+#     """
+#     получаем описание категории
+#     :return:category_description
+#     """
+#     category_description = category_list['description']
+#     # print(category_description)
+#     return category_description
+#
+#
+# def get_category_products(category_list):
+#     """
+#     Получаем список товаров в категории
+#     :return:category_products
+#     """
+#     category_products = category_list['products']
+#     # print(category_products)
+#     return category_products
 
 
 # def get_product_name(products_list):
@@ -77,29 +74,29 @@ def get_category_products(category_list):
 #     return product_price
 
 
-def get_quantity(products_list):
-    """
-    получаем количество на складе.
-    :param products_list:
-    :return:product_quantity
-    """
-    product_quantity = products_list['quantity']
-    # print(product_quantity)
-    return product_quantity
+# def get_quantity(products_list):
+#     """
+#     получаем количество на складе.
+#     :param products_list:
+#     :return:product_quantity
+#     """
+#     product_quantity = products_list['quantity']
+#     # print(product_quantity)
+#     return product_quantity
 
 
-def create_category_object(category_list):
-    """
-    Создаем экземпляры класса Category
-    :param category_list
-    :return: category_object
-    """
-    category_name = get_category_name(category_list)
-    category_description = get_category_description(category_list)
-    category_products = get_category_products(category_list)
-    category_object = Category_class.Category(category_name, category_description, category_products)
-    # print(category_object)
-    return category_object
+# def create_category_object(category_list):
+#     """
+#     Создаем экземпляры класса Category
+#     :param category_list
+#     :return: category_object
+#     """
+#     category_name = get_category_name(category_list)
+#     category_description = get_category_description(category_list)
+#     category_products = get_category_products(category_list)
+#     category_object = Category_class.Category(category_name, category_description, category_products)
+#     # print(category_object)
+#     return category_object
 
 
 # def create_product_object(products_list):
@@ -117,26 +114,24 @@ def create_category_object(category_list):
 #     return product_object
 
 
-def create_cat_list(category_object, cat_list):
-    """
-    Создаем список всех категорий
-    :param cat_list:
-    :param category_object:
-    :return: cat_list
-    """
-    cat_list.append(category_object)
-    # print(cat_list)
-    return cat_list
+# def create_cat_list(category_object, cat_list):
+#     """
+#     Создаем список всех категорий
+#     :param cat_list:
+#     :param category_object:
+#     :return: cat_list
+#     """
+#     cat_list.append(category_object)
+#     # print(cat_list)
+#     return cat_list
 
 
-def create_products_list(product_object, prod_list):
-    """
-
-    :param product_object, prod_list:
-    :return: products_list
-    """
-    prod_list.append(product_object)
-    # print(prod_list)
-    return prod_list
-
-
+# def create_products_list(product_object, prod_list):
+#     """
+#
+#     :param product_object, prod_list:
+#     :return: products_list
+#     """
+#     prod_list.append(product_object)
+#     # print(prod_list)
+#     return prod_list
