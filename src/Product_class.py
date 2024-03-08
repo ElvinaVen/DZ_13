@@ -67,8 +67,6 @@ class Product:
         :param product_quantity:
         :return: new_product_object
         """
-        # new_product_object = cls(product_name, product_description, product_price, product_quantity)
-        #
         return cls(product_name, product_description, product_price, product_quantity)
 
     @property
@@ -91,7 +89,6 @@ class Product:
         :return:product_name
         """
         product_name = products_list['name']
-        # print(product_name)
         return product_name
 
     @staticmethod
@@ -102,7 +99,6 @@ class Product:
         :return:products_description
         """
         products_description = products_list['description']
-        # print(products_description)
         return products_description
 
     @staticmethod
@@ -113,7 +109,6 @@ class Product:
         :return:product_price
         """
         product_price = products_list['price']
-        # print(product_price)
         return product_price
 
     @staticmethod
@@ -124,5 +119,4 @@ class Product:
         :return:product_quantity
         """
         product_quantity = products_list['quantity']
-        # print(product_quantity)
         return product_quantity
