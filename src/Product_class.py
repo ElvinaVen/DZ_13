@@ -12,9 +12,9 @@ class Product:
         self.product_description = product_description
         self.product_quantity = product_quantity
 
-    # def __repr__(self):
-    #     return (f"Имя продукта - {self.product_name} Описание продукта - {self.product_description} "
-    #             f"Стоимость продукта - {self.product_price} Количество - {self.product_quantity}")
+    def __repr__(self):
+        return (f"Имя продукта - {self.product_name} Описание продукта - {self.product_description} "
+                f"Стоимость продукта - {self.product_price} Количество - {self.product_quantity}")
 
     @classmethod
     def create_product_object(cls, products_list):
@@ -126,14 +126,3 @@ class Product:
         product_quantity = products_list['quantity']
         # print(product_quantity)
         return product_quantity
-
-# emp = Product('Iphone 5', "128GB, Gray space", 10000.0, 3)
-# print(emp.get_category_products)
-
-
-# print(new_product_object)
-# new_product_object = Product('Iphone 5', "128GB, Gray space", 10000.0, 3)
-
-# print(new_product_object.product_price_func)
-# new_product_object.product_price_func = 2000
-# print(new_product_object.product_price_func)

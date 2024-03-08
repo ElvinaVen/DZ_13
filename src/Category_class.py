@@ -1,9 +1,3 @@
-# from DZ_13_OOP1.src.Product_class import new_product_object
-
-
-# from DZ_13_OOP1.src.main import category_object
-# from DZ_13_OOP1.src.utils import load_src_file, create_category_object
-
 
 class Category:
     category_name: str
@@ -20,8 +14,8 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(self.__products)
 
-    # def __repr__(self):
-    #     return f"Имя категории - {self.category_name}; Описание категории - {self.category_description}; Список продуктов - {self.__products}\n"
+    def __repr__(self):
+        return f"Имя категории - {self.category_name}; Описание категории - {self.category_description}; Список продуктов - {self.__products}\n"
 
     @classmethod
     def create_category_object(cls, category_list):
@@ -108,21 +102,3 @@ class Category:
     #     # print(category_name)
     #     return category_name
 
-# print(new_product_object.get_category_products)
-# Category.add_product(new_product_object)
-# print(Category.category_description)
-# product_object = Product('Iphone 5', "128GB, Gray space", 10000.0, 3)
-# src_file = load_src_file()
-# for i in range(len(src_file)):
-#     category_object = create_category_object(src_file[i])
-
-
-# category_object.add_product(product_object)
-# a = category_object.add_product(new_product_object)
-# print(a)
-
-# category = Category("Смартфоны",
-#                     "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
-#                     [])
-# category.add_product_object(new_product_object)
-# print(category.get_category_products)
