@@ -1,6 +1,3 @@
-from DZ_13_OOP1.src.Category_class import Category
-
-
 class Product:
     product_name: str
     product_description: str
@@ -53,7 +50,6 @@ class Product:
     # @classmethod
     # def add_in_category(cls, prod):
     #     return Category.set_product(prod)
-
 
     @classmethod
     def create_new_product_object(cls, product_name, product_description, product_price, product_quantity):

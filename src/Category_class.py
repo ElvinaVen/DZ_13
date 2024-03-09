@@ -18,8 +18,8 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(self.__products_list_one_category)
 
-    # def __repr__(self):
-    #     return f"Имя категории - {self.category_name}; Описание категории - {self.category_description}; Список продуктов - {self.__products_list_one_category}\n"
+    def __repr__(self):
+        return f"Имя категории - {self.category_name}; Описание категории - {self.category_description}; Список продуктов - {self.__products_list_one_category}\n"
 
     @classmethod
     def create_category_object(cls, one_category_list):
@@ -48,35 +48,67 @@ class Category:
     # def get_category_list(cls):
     #     return cls.cat_list   # список всех категорий
 
+    # def set_product(self, product_object):
+    #     """
+    #     метод для добавления товаров в категорию (в список). Метод должен добавлять в список экземпляр класса Product,
+    #     соответственно список будет состоять из экземлпяров класса Product.
+    #     :param product_object: принимоет объект класса продукт
+    #     :return:
+    #     """
+    #
+    #     self.__products_list_one_category.append(product_object)
+    #     # print(a)
+    #     # return cls.__products_list_one_category
 
-    def set_product(self, product_object):
+    def add_to_private_list(self, product_object):
+        '''
+         метод для добавления товара в категорию
+        :param product_object:принимоет объект класса продукт
+        '''
+        self.__products_list_one_category.append(product_object)
+
+    def get_private_list(self):
         """
-        метод для добавления товаров в категорию (в список). Метод должен добавлять в список экземпляр класса Product,
-        соответственно список будет состоять из экземлпяров класса Product.
-        :param product_object: принимоет объект класса продукт
+        возвращает текущий список товаров после добавления
         :return:
         """
+        # print(self.__products_list_one_category)
+        return self.__products_list_one_category
 
-        self.__products_list_one_category.append(product_object)
-        print(a)
-        # return cls.__products_list_one_category
+    @classmethod
+    def create_new_category_object(cls, category_name, category_description, products_list_one_category):
+        return cls(category_name, category_description, products_list_one_category)
 
-    def add_product_to_category(self, product_object):
-        self.set_product(product_object)
+    # def add_product_to_category(self, product_object):
+    #     """
+    #
+    #     :param product_object:
+    #     :return:
+    #     """
+    #     self.set_product(product_object)
 
-    def get_products_list(self):
-        return self.product
+    # def get_products_list(self):
+    #     return self.product
 
     # cls.prod_list.append(product_object)
     # return cls.prod_list  # список всех категорий
 
-    @property
-    def products(self):
-        category_products_string = []
-        for product in self.__products_list_one_category:
-            category_products_string.append(
-                f'{product.product_name}, {product.product_price} руб. Остаток: {product.product_quantity} шт.')
-        return 'n'.join(category_products_string)
+    # @property
+    # def products_list_one_category(self, category_name):
+    #     category_products_string = ""
+    #     for product in self.__products_list_one_category:
+    #         category_products_string += f'{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.'
+    #     return category_products_string
+
+    def get_prod_in_category(self, category_name):
+        if category_name == self.category_name:
+            print(f'Категория "{category_name}" найдена в списке категорий.')
+            for i in range(len(self.__products_list_one_category)):
+                print(f'{self.__products_list_one_category[i]['name']}, {self.__products_list_one_category[i]["price"]} руб. Остаток: {self.__products_list_one_category[i]["quantity"]} шт.')
+        else:
+            return f'Категория "{category_name}" не найдена в списке категорий.'
+
+
         # category_products_string = []
         # for product in self.__products:
         #     category_products_string.append(f'{product.product_name}, {product.products_price} руб. Остаток: {product.quantity} шт.')
@@ -115,7 +147,6 @@ class Category:
 
     def get_telek(self, category_name):
         pass
-
 
 # category_object = Category.create_category_object(category_list)
 # Category.add_category_object(category_object)
