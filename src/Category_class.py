@@ -1,11 +1,15 @@
+# from DZ_13_OOP1.src.Product_class import Product
+# from DZ_13_OOP1.src.Product_class import Product
+
 
 class Category:
     category_name: str
     category_description: str
-    __products: list  # это список товаров
+    __products: list  # это список товаров данной категории
     category_count = 0  # общее количество категорий
     product_count = 0  # общее количество уникальных продуктов
     cat_list = []
+    prod_list = []
 
     def __init__(self, category_name, category_description, products):
         self.category_name = category_name
@@ -44,24 +48,31 @@ class Category:
     def get_category_list(cls):
         return cls.cat_list
 
-    def add_product_object(self, product_obj):
+    @staticmethod
+    def set_product(product_list):
         """
         метод для добавления товаров в категорию (в список). Метод должен добавлять в список экземпляр класса Product,
         соответственно список будет состоять из экземлпяров класса Product.
         :param product_obj:принимоет объект класса продукт
         :return:
         """
-        self.__products.append(product_obj)
-        print(self.__products)
-        return self.__products
+
+        __products = product_list
+        # print(__products)
+        return __products
 
     @property
-    def get_category_products(self):
-        category_products = ''
+    def products(self):
+        category_products_string = []
         for product in self.__products:
-            category_products += f'{product.product_name}, {product.product_price} руб. Остаток: {product.product_quantity} шт.'
-        # print(category_products)
-        return category_products
+            category_products_string.append(
+                f'{product.product_name}, {product.product_price} руб. Остаток: {product.product_quantity} шт.')
+        return 'n'.join(category_products_string)
+        # category_products_string = []
+        # for product in self.__products:
+        #     category_products_string.append(f'{product.product_name}, {product.products_price} руб. Остаток: {product.quantity} шт.')
+        #     print(category_products_string)
+        # return f'{product.product_name}, {product.products_price} руб. Остаток: {product.quantity} шт.'
 
     @staticmethod
     def get_category_name(category_list):
@@ -93,12 +104,8 @@ class Category:
         # print(category_products)
         return category_products
 
-    # def get_category_name(category_list):
-    #     """
-    #     получаем наименование категории
-    #     :return:category_name
-    #     """
-    #     category_name = category_list['name']
-    #     # print(category_name)
-    #     return category_name
-
+# category_object = Category.create_category_object(category_list)
+# Category.add_category_object(category_object)
+# product_object = Category.create_category_object('Iphone 5', "128GB, Gray space", 10000.0, 3)
+# # category_products_string = get_category_products()
+# print(product_object.get_category_products)
