@@ -20,39 +20,39 @@ class Product:
                 f"Стоимость продукта - {self.product_price} Количество - {self.product_quantity}")
 
     @classmethod
-    def create_product_object(cls, products_list):
+    def create_product_object(cls, one_product_dict):
         """
         Создаем экземпляры класса Product
-        :param products_list
+        :param one_product_dict
         :return: product_object
 
         """
-        product_name = cls.get_product_name(products_list)
-        product_description = cls.get_product_description(products_list)
-        product_price = cls.get_products_price(products_list)
-        product_quantity = cls.get_quantity(products_list)
+        product_name = cls.get_product_name(one_product_dict)
+        product_description = cls.get_product_description(one_product_dict)
+        product_price = cls.get_product_price(one_product_dict)
+        product_quantity = cls.get_quantity(one_product_dict)
         # product_object = Product(product_name, product_description, product_price, product_quantity)
         return cls(product_name, product_description, product_price, product_quantity)
 
     @classmethod
-    def add_product_object(cls, product_object):
+    def add_product_object_in_prod_list(cls, product_object):
         """
-        Создаем список всех категорий
+        Создаем список всех товаров
 
         :param product_object:
-        :return: cat_list
+        :return: prod_list
         """
 
         cls.prod_list.append(product_object)
-        cls.add_in_category(cls.prod_list)
+        return cls.prod_list  # список всех категорий
 
-    @classmethod
-    def get_product_list(cls):
-        return cls.prod_list
+    # @classmethod
+    # def get_product_list(cls):
+    #     return cls.prod_list
 
-    @classmethod
-    def add_in_category(cls, prod):
-        return Category.set_product(prod)
+    # @classmethod
+    # def add_in_category(cls, prod):
+    #     return Category.set_product(prod)
 
 
     @classmethod
@@ -100,7 +100,7 @@ class Product:
         return products_description
 
     @staticmethod
-    def get_products_price(products_list):
+    def get_product_price(products_list):
         """
         получаем цену продукта.
         :param products_list:

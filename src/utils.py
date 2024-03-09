@@ -4,7 +4,7 @@ import json
 def load_src_file():
     """
     Ф-ия загрузки списка из json.
-    :return: src_file - весь список товаров по категориям
+    :return: src_file - весь список категорий с описанием и товарами
     """
     with open('file.json', 'r', encoding='utf-8') as file:
         src_file = json.load(file)
