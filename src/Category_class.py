@@ -33,21 +33,20 @@ class Category:
             print(f'Категория "{category_name}" не найдена в списке категорий.')
 
     @staticmethod
-    def get_category_products2(category_name, src_file):
+    def get_products(category_name, src_file):
         """
         Получаем список товаров в категории
         :return:category_products
         """
         for category in src_file:
             if category['name'] == category_name:
-                products_list_one_category2 = category['products']
-        return products_list_one_category2
+                return category['products']
 
     @staticmethod
-    def add_product_in_category2(category_name, new_product, src_file, products_list_one_category2):
-        for category in src_file:
+    def add_product_in_category(category_name, new_product, src_file):
+        for i, category in enumerate(src_file):
             if category['name'] == category_name:
-                products_list_one_category2.append(new_product)
+                src_file[i]["products"].append(new_product)
             else:
                 print(f"Товар не относится к категории {category_name}!")
-            return products_list_one_category2
+            return src_file
