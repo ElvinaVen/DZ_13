@@ -47,6 +47,45 @@ class Category:
         for i, category in enumerate(src_file):
             if category['name'] == category_name:
                 src_file[i]["products"].append(new_product)
-            else:
-                print(f"Товар не относится к категории {category_name}!")
+                return src_file
+            print(f"Товар не относится к категории {category_name}!")
             return src_file
+
+    @classmethod
+    def create_category_object(cls, one_category_list):
+        """
+        Создаем экземпляры класса Category
+        :param one_category_list
+        :return: category_object
+        """
+        category_name = cls.get_category_name(one_category_list)
+        category_description = cls.get_category_description(one_category_list)
+        products_list_one_category = cls.get_category_products(one_category_list)
+        return cls(category_name, category_description, products_list_one_category)
+
+    @staticmethod
+    def get_category_name(one_category_list):
+        """
+        получаем наименование категории
+        :return:category_name
+        """
+        category_name = one_category_list['name']
+        return category_name
+
+    @staticmethod
+    def get_category_description(one_category_list):
+        """
+        получаем описание категории
+        :return:category_description
+        """
+        category_description = one_category_list['description']
+        return category_description
+
+    @staticmethod
+    def get_category_products(one_category_list):
+        """
+        получаем наименование категории
+        :return:category_name
+        """
+        category_products = one_category_list['products']
+        return category_products

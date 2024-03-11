@@ -31,5 +31,5 @@ def test_initial_value_product(src_file):
 
     assert product_object.product_name == '55" QLED 4K'
     assert product_object.product_description == 'Фоновая подсветка'
-    assert product_object.product_price == 123000.0
+    assert product_object.__product_price == 123000.0
     assert product_object.product_quantity == 7
