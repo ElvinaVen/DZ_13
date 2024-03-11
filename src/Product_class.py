@@ -104,3 +104,19 @@ class Product:
         """
         product_quantity = products_list['quantity']
         return product_quantity
+
+    @classmethod
+    def verification(cls, a, new_product_object2):
+        for i, product in enumerate(a):
+            print(i, product)
+            if product['name'] == product_name:
+                print("Такой есть")
+                cls.product_quantity += product['quantity']
+                print(cls.product_quantity)
+            else:
+                print("все ок")
+
+            #     src_file[i]["products"].append(new_product_object)
+            #     return src_file
+            # print(f"Товар не относится к категории {category_name}!")
+            # return src_file
