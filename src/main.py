@@ -5,82 +5,120 @@ from DZ_13_OOP1.src.utils import load_src_file
 # Овощи Фрукты - это для подставления в name1 и name2
 
 src_file = load_src_file()
-print(src_file)
+# print(src_file)
 
 print("\n---Задание 1---")
-products_by_category = {}
-name1 = "Фрукты"
-for i in range(len(src_file)):
-    one_category_list = src_file[i]
-    category_object = Category.create_category_object(one_category_list)
-    # print(f"---{one_category_list}")
-    for j in range(len(one_category_list['products'])):
-        prod_list = one_category_list['products'][j]
-        prod_obj = Product.create_product_object(prod_list)
-        # print(type(prod_obj))
-        # print(prod_obj)
-        # Добавляем продукт в список продуктов категории в словаре
-        category_name = category_object.category_name
-        if category_name in products_by_category:
-            products_by_category[category_name].append(prod_obj)
-            # new_prod_list = products_by_category[category_name]
-            # print(new_prod_list)
-        else:
-            products_by_category[category_name] = [prod_obj]
-        # print("+++")
-        new_prod_list = products_by_category[category_name]
-        # print(new_prod_list)
-print("---")
+def full_total_category_list():
+    total_list = []
+    for i in range(len(src_file)):
+        category_object = Category.create_category_object(src_file[i])
+        # create_product_object3()
+        # print(f"Экземпляр категории до: {category_object}\n")
+        products1 = create_category_products_list(src_file[i])  # [Экз-р продукта - Бананы, Желтые, 120.0, 12, Экз-р продукта - Яблоки, Красные, 80.0, 8, Экз-р продукта - Груши, Зеленые, 140.0, 14]
+        products = category_object.add_product(products1)
+        print(f"Список продуктов экз-ра категории: {products}\n")
+        print(f"Экземпляр категории после: {category_object}\n")
+        total_list.append(category_object)
+        print(f"Экземпляр категории после: {total_list}\n")
+        print("-----------------------------------------------------------------")
 
-    # print(prod_list)
-    # Выводим результат
-print(f"Общий список продуктов по категориям {products_by_category}")
-for category, products_list in products_by_category.items():
-    print(f"Категория: {category}")
-    for product in products_list:
-        print(product)
-    print()
-# print(category_object.category_name)
-# Category.add_product_in_category2(prod_obj, category_object)
-# print(Category.get)
+    return total_list
 
-    # Category.get_product_list(prod_obj)
-    # print(Category.get_product_list(prod_obj))
-    # Category.get_product_list(prod_obj)
-    # print(prod_list)
-    # print(prod_obj)
+def create_category_products_list(src_file):
+    # name1 = "Фрукты"
+    products1 = []
+    for j in range(len(src_file['products'])):
+        prod_list = src_file['products'][j]
+        # products.join(Product.create_product_object(prod_list))
+        products1.append(Product.create_product_object(prod_list))
+    print(f"продактс это список: {products1}\n")
+    return products1
 
-# Category.add(prod_obj)
-
-# print(f"3) Список товаров до добавления нового товара: {Category.add_new(prod_obj)}")
-
-# # print(f"4) Длина списка товаров до добавления нового товара: {len(Category.get_products(name1, src_file))}")
-# new_product_object = Product.create_new_product_object(product_name='Киви', product_description="Кислый", product_price=90.0, product_quantity=9)
-new_product_object = Product.create_product_object3('Киви', "Кислый", 90.0, 9)
-# print(type(new_product_object))
-print(new_product_object)
+print("-----------------------------------------------------------------")
+total_list = full_total_category_list()
+print(f"Общий список всех категорий с продуктами:{total_list}")
 category_name = "Фрукты"
-# category_name = new_product_object.category_name
-if category_name in products_by_category:
-    products_by_category[category_name].append(new_product_object)
-    # new_prod_list = products_by_category[category_name]
-    # print(new_prod_list)
-else:
-    products_by_category[category_name] = [new_product_object]
-print(f"Общий список продуктов по категориям {products_by_category}")
-# new_product_object = Product.create_product_object('Киви', "Кислый", 90.0, 9)
-# Category.add_product_in_category2(new_product_object, products_by_category)
+#
+new_product_object = Product.create_product_object3('Киви', "Кислый", 90.0, 9)
+print(new_product_object)
+Category.adds(new_product_object, total_list, category_name)
+print(total_list)
+# category_name = "Фрукты"
+# Category.adds(new_product_object, Category.products_by_category, category_name)
+print("-----------------------------------------------------------------")
 
-# print(f"8) Список товаров после добавления нового товара: {Category.get_products(name1, src_file)}")
-# print(f"9) Длина списка товаров после добавления нового: {len(Category.get_products(name1, src_file))}")
-# print(src_file[0].product_name)
+# # new_product_object = Product.create_new_product_object(product_name='Киви', product_description="Кислый", product_price=90.0, product_quantity=9)
+#
+# new_product_object = Product.create_product_object3('Киви', "Кислый", 90.0, 9)
+# category_name = "Фрукты"
+# Category.adds(new_product_object, Category.products_by_category, category_name)
+# # print(f"Общий список продуктов по категориям после {Category.products_by_category}")
+# for category, products_list in Category.products_by_category.items():
+#     # print(f"Категория: {category}")
+#     for product in products_list:
+#         print(product)
+#     print()
 
-# print("\n---Задание 2---")
+print("\n---Задание 2---")
+
+# category_object.
+# def abcd(total_list):
+#     for category_info in total_list:
+#         category_name = category_info.category_name
+#         product_info = category_info.products
+#
+#         print(f"Категория: {category_name}")
+#
+#         for product in range(total_list):
+#             product_name = product.product_name
+#             product_description = product.product_description
+#             product_price = product.product_price
+#             product_quantity = product.product_quantity
+#
+#             # print(
+#             #     f"Товар: {product_name}, Описание: {product_description}, Цена: {product_price}, Количество: {product_quantity}")
+#         return f"Товар: {product_name}, Описание: {product_description}, Цена: {product_price}, Количество: {product_quantity}"
+# #
+# c = abcd(total_list)
+# print(c)
 # name2 = "Овощи"
 # print(f"В категории {name2}:")
-# prod_list = Category.get_products(name2, src_file)
-# new_category_object = Category.create_new_category_object(name2, category_description='', products_list_one_category=prod_list)
-# new_category_object.get_prod_in_category = name2
+# for category, products in total_list:
+#     print(f"Категория: {category}")
+#     for product in products:
+#         print(category.products)
+#     print()
+
+
+# def abc():
+#     for category, products_list in Category.products_by_category.items():
+#         print(f"Категория: {category}")
+
+        # print(products_list)
+        # print(products_list.products())
+
+
+#
+# abc()
+
+
+
+
+# list =
+# for product in category_products:
+#     for i in products_by_category['Фрукты']:
+#         print(f'{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.')
+
+
+# print("n---Общий список продуктов по категориям---")
+# for category_name, products in products_by_category.items():
+#     print(f"n---{category_name}---")
+#     for product in products:
+#
+#         print(f'{product.get_prod_in_category}')
+
+# new_category_object2 = Category.create_new_category_object(name2, category_description='', products_list_one_category=prod_list)
+# new_category_object2.get_prod_in_category = name2
 
 # print("\n---Задание 4---")
 # pr1 = Product(product_name="Киви", product_description="Кислый", product_price=90.0, product_quantity=9)

@@ -143,6 +143,17 @@ class Product:
     #         # print(f"Товар не относится к категории {category_name}!")
     #         # return src_file
 
-
+    # @property
+    # def test2(self):
+    #     return [product for product in self.__products_list_one_category if product['name'] == self.category_name]
+    #
+    # @test2.setter
+    # def get_prod_in_category(self, category_name):
+    #
+    #     if category_name == self.category_name:
+    #         for product in self.__products_list_one_category:
+    #             print(f'{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.')
+    #     else:
+    #         print(f'Категория "{category_name}" не найдена в списке категорий.')
 
 
