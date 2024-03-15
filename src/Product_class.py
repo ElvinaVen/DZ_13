@@ -14,7 +14,6 @@ class Product:
     def __repr__(self):
         return f"Экз-р продукта - {self.product_name}, {self.product_description}, {self.__product_price}, {self.product_quantity}"
 
-
     @property
     def price(self):
         return self.__product_price
@@ -29,7 +28,7 @@ class Product:
 
     @staticmethod
     def my_decorator(func):
-        def inner(*args, **kwargs):
+        def inner(**kwargs):
             result2 = {
                 "name": kwargs['product_name'],
                 "description": kwargs['product_description'],
@@ -38,93 +37,84 @@ class Product:
             }
             print(f"7) Создали новый экземпляр товара = {result2}")
             return result2
+
         return inner
 
+    # @classmethod
+    # @my_decorator
+    # def create_new_product_object(cls, **kwargs):
+    #     """
+    #     создали новый экземпляр класса Product
+    #     """
+    #     product_name = kwargs['product_name']
+    #     product_description = kwargs['product_description']
+    #     product_price = kwargs['product_price']
+    #     product_quantity = kwargs['product_quantity']
+    #     return cls(product_name, product_description, product_price, product_quantity)
+
     @classmethod
-    @my_decorator
-    def create_new_product_object(cls, **kwargs):
+    def get_product_object(cls, src_file):
         """
-        создали новый экземпляр класса Product
+        Создаем экземпляры класса Product
+        :param one_category_list
+        :return: product_object
         """
-        product_name = kwargs['product_name']
-        product_description = kwargs['product_description']
-        product_price = kwargs['product_price']
-        product_quantity = kwargs['product_quantity']
+        product_name = cls.get_product_name(src_file)
+        product_description = cls.get_product_description(src_file)
+        product_price = cls.get_product_price(src_file)
+        product_quantity = cls.get_product_quantity(src_file)
         return cls(product_name, product_description, product_price, product_quantity)
 
     @classmethod
-    def create_product_object(cls, one_category_list):
+    def create_new_product_object(cls, product_name, product_description, product_price, product_quantity):
         """
         Создаем экземпляры класса Product
-        :param one_product_dict
+        :param product_quantity:
+        :param product_price:
+        :param product_description:
+        :param product_name:
         :return: product_object
         """
-        # for i in range(len(one_category_list)):
-
-        product_name = cls.get_product_name(one_category_list)
-        product_description = cls.get_product_description(one_category_list)
-        product_price = cls.get_product_price(one_category_list)
-        product_quantity = cls.get_quantity(one_category_list)
-        # print(i, product)
-        # print(cls(product_name, product_description, product_price, product_quantity))
-        return cls(product_name, product_description, product_price, product_quantity)
-
-    @classmethod
-    def create_product_object3(cls, product_name, product_description, product_price, product_quantity):
-        """
-        Создаем экземпляры класса Product
-        :param one_product_dict
-        :return: product_object
-        """
-        # for i in range(len(one_category_list)):
-
-        # product_name = kwargs['product_name']
-        # product_description = kwargs['product_description']
-        # product_price = kwargs['product_price']
-        # product_quantity = kwargs['product_quantity']
-        # print(i, product)
-        # print(cls(product_name, product_description, product_price, product_quantity))
         return cls(product_name, product_description, product_price, product_quantity)
 
     @staticmethod
-    def get_product_name(prod_list):
+    def get_product_name(src_file):
         """
         получаем наименование продукта для класса Products.
-        :param products_list:
+        :param prod_list:
         :return:product_name
         """
-
-        product_name = prod_list['name']
+        product_name = src_file['name']
         return product_name
 
     @staticmethod
-    def get_product_description(prod_list):
+    def get_product_description(src_file):
         """
         получаем описание продукта.
-        :param src_file:
+        :param prod_list:
         :return:products_description
         """
-        product_description = prod_list['description']
+        product_description = src_file['description']
         return product_description
 
     @staticmethod
-    def get_product_price(prod_list):
+    def get_product_price(src_file):
         """
         получаем цену продукта.
-        :param products_list:
+        :param prod_list:
         :return:product_price
         """
-        __product_price = prod_list['price']
+        __product_price = src_file['price']
         return __product_price
 
     @staticmethod
-    def get_quantity(prod_list):
+    def get_product_quantity(src_file):
         """
         получаем количество на складе.
-        :param products_list:
+        :param prod_list:
         :return:product_quantity
         """
-        product_quantity = prod_list['quantity']
+        product_quantity = src_file['quantity']
         return product_quantity
 
     # @classmethod
@@ -155,5 +145,3 @@ class Product:
     #             print(f'{product["name"]}, {product["price"]} руб. Остаток: {product["quantity"]} шт.')
     #     else:
     #         print(f'Категория "{category_name}" не найдена в списке категорий.')
-
-
